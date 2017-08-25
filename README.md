@@ -1,4 +1,5 @@
 # HyperAuth
+[![Build Status](https://travis-ci.org/HyperAuth/ExHyperAuth.svg?branch=master)](https://travis-ci.org/HyperAuth/ExHyperAuth)
 
 **TODO: Add description**
 
