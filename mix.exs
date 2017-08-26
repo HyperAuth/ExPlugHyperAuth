@@ -13,7 +13,7 @@ defmodule HyperAuth.Mixfile do
         licenses: ["AGPLv3"],
         source_url: "https://github.com/HyperAuth/ExHyperAuth",
         homepage_url: "https://github.com/HyperAuth/ExHyperAuth",
-        links: %{}
+        links: %{},
         maintainers: [
           "Jesús Hernández Gormaz"
         ]
