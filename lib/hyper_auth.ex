@@ -87,7 +87,7 @@ defmodule HyperAuth do
             credentials = process_authorization conn, scheme, tokens, authorization_properties, opts
             if is_map credentials do
               # Authenticate
-              user = authenticate credentials, opts
+              user = authenticate scheme, credentials, opts
               if is_map user do
                 # Put the user in the connection
                 put_private conn, :auth_user, credentials
@@ -113,7 +113,7 @@ defmodule HyperAuth do
     end
   end
 
-  defp authenticate(credentials, opts) do
+  defp authenticate(scheme, credentials, opts) do
     # Call the configured authenticator module
     authenticator_module = opts[:authenticator]
     if is_nil authenticator_module do
@@ -122,7 +122,7 @@ defmodule HyperAuth do
       # Add common credentials values
       nas_identifier = Atom.to_string(node())
       credentials = Map.put(credentials, "NAS-Identifier", nas_identifier)
-      user = authenticator_module.authenticate credentials, opts
+      user = authenticator_module.authenticate scheme, credentials, opts
       # All user map need an UID
       if is_nil user["uid"] do
         nil

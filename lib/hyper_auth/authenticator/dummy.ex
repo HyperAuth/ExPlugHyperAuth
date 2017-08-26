@@ -9,7 +9,7 @@ defmodule HyperAuth.Authenticator.Dummy do
 
   ## Examples
 
-    iex> HyperAuth.Authenticator.Dummy.authenticate(%{
+    iex> HyperAuth.Authenticator.Dummy.authenticate("basic", %{
     ...> "User-Name" => "test",
     ...> "User-Password" => "tset"
     ...> }, [authenticator_dummy_password: "tset"])
@@ -17,7 +17,7 @@ defmodule HyperAuth.Authenticator.Dummy do
       "uid" => "test"
     }
   """
-  def authenticate(credentials, opts) do
+  def authenticate(_scheme, credentials, opts) do
     username = credentials["User-Name"]
     password = credentials["User-Password"]
     if opts[:authenticator_dummy_password] == password do
