@@ -6,8 +6,14 @@ defmodule HyperAuth.Mixfile do
       app: :plug_hyper_auth,
       version: "0.1.0",
       elixir: "~> 1.3",
+      description: "Plug for HTTP authentication",
       start_permanent: Mix.env == :prod,
-      deps: deps()
+      deps: deps(),
+      package: [
+        licenses: ["AGPLv3"],
+        source_url: "https://github.com/HyperAuth/ExHyperAuth",
+        homepage_url: "https://github.com/HyperAuth/ExHyperAuth"
+      ]
     ]
   end
 
