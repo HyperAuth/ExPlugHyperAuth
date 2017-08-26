@@ -1,4 +1,7 @@
 # HyperAuth
+[![Hex.pm](https://img.shields.io/hexpm/l/plug_hyper_auth.svg)](https://hex.pm/packages/plug_hyper_auth)
+[![Hex.pm](https://img.shields.io/hexpm/v/plug_hyper_auth.svg)](https://hex.pm/packages/plug_hyper_auth)
+[![Hex.pm](https://img.shields.io/hexpm/dt/plug_hyper_auth.svg)](https://hex.pm/packages/plug_hyper_auth)
 [![Build Status](https://travis-ci.org/HyperAuth/ExHyperAuth.svg?branch=master)](https://travis-ci.org/HyperAuth/ExHyperAuth)
 
 Plug for HTTP authentication.
