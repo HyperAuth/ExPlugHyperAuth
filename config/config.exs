@@ -10,11 +10,11 @@ use Mix.Config
 
 # You can configure your application as:
 #
-#     config :hyper_auth, key: :value
+#     config :plug_hyper_auth, key: :value
 #
 # and access this configuration in your application as:
 #
-#     Application.get_env(:hyper_auth, :key)
+#     Application.get_env(:plug_hyper_auth, :key)
 #
 # You can also configure a 3rd-party app:
 #
