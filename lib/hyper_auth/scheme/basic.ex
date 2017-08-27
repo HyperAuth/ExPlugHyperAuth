@@ -37,8 +37,8 @@ defmodule HyperAuth.Scheme.Basic do
         case String.split credentials, ":" do
           [username, password] ->
             %{
-              "User-Name" => username,
-              "User-Password" => password
+              "Username" => username,
+              "Password" => password
             }
           _ ->
             nil
