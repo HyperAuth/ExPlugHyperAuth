@@ -22,6 +22,7 @@ defmodule HyperAuthTest do
   doctest HyperAuth.Scheme.Basic
   doctest HyperAuth.Scheme.Digest
   doctest HyperAuth.Authenticator.Dummy
+  doctest HyperAuth.Authenticator.LDAP
 
   test "HTTP public access 200" do
     opts = HyperAuth.init([public: true])
