@@ -27,9 +27,25 @@ and is published on [HexDocs](https://hexdocs.pm). The docs can be found at
 
 Contribution is welcomed. Open a [pull request][pulls] when you are ready to contribute.
 
-If you are planning to contribute documentation, [please check our best practices for writing documentation][writing-docs]. Remember to add tests for the code added and try to keep the code clean.
+If you are planning to contribute documentation, please check the
+[best practices for writing documentation of Elixir][writing-docs].
 
-Finally, remember all interactions in our official spaces follow our [Code of Conduct][code-of-conduct].
+Add tests for the code added and try to keep the code clean. The pull request
+need to pass the tests to be accepted.
+
+Finally, remember all interactions in our official spaces follow the
+[Elixir Code of Conduct][code-of-conduct].
+
+### Copyright
+
+You hereby assign copyright in this code to the project, to be licensed
+under the same terms as the rest of the code.
+
+You're owner of your contribution copyright, but it will be covered under
+HyperAuth's license and also it's shared with the rest of authors, all the
+contributors are authors of HyperAuth.
+
+Read the license note section to check details about it.
 
 ### Useful links
 
@@ -43,18 +59,21 @@ Some useful links if you want to contribute to this repository.
 
 ## License note
 
-This program is free software: you can redistribute it and/or modify
+HyperAuth is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as
 published by the Free Software Foundation, either version 3 of the
 License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
+HyperAuth is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Affero General Public License for more details.
 
 You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
+along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+Check [NOTICE](NOTICE) and [LICENSE](LICENSE) files for more
+information.
 
   [code-of-conduct]: https://github.com/elixir-lang/elixir/blob/master/CODE_OF_CONDUCT.md
   [writing-docs]: http://elixir-lang.org/docs/stable/elixir/writing-documentation.html
