@@ -6,6 +6,9 @@
 
 Plug for HTTP authentication.
 
+ExHyperAuth repository is the version of HyperAuth wrote in Elixir to use with web
+applications based on Plug.
+
 ## Installation
 
 The package can be installed by adding `plug_hyper_auth` to your list of
