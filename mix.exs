@@ -37,6 +37,7 @@ defmodule HyperAuth.Mixfile do
   defp deps do
     [
       {:plug, "~> 1.3.3 or ~> 1.4"},
+      {:exldap, "~> 0.4", optional: true},
       {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end
