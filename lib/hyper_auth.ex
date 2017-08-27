@@ -16,7 +16,7 @@
 defmodule HyperAuth do
   import Plug.Conn
   @moduledoc """
-  Plug for HTTP AAA using the HTTP Auth framework.
+  Plug for HTTP AAA using the HTTP auth framework.
 
   When a configured scheme is found in the authorization header
   it will use that to process the values of the header (with
@@ -54,21 +54,6 @@ defmodule HyperAuth do
   | YES |  YES   |  YES   | NO   |  200   | anon |
   | YES |  NO    |  YES   | YES  |  200   | user |
   | YES |  YES   |  YES   | YES  |  200   | user |
-
-  ## License note
-
-  This program is free software: you can redistribute it and/or modify
-  it under the terms of the GNU Affero General Public License as
-  published by the Free Software Foundation, either version 3 of the
-  License, or (at your option) any later version.
-
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU Affero General Public License for more details.
-
-  You should have received a copy of the GNU Affero General Public License
-  along with this program.  If not, see <http://www.gnu.org/licenses/>.
   """
 
   @doc """
