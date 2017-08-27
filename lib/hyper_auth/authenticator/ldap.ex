@@ -16,7 +16,7 @@
 defmodule HyperAuth.Authenticator.LDAP do
   @behaviour HyperAuth.Authenticator
   @moduledoc """
-  LDAP authenticator for `HyperAuth` plug.
+  LDAP authenticator.
 
   It will verify the credentials of authentications
   based in password with a LDAP server. It requires the
