@@ -41,25 +41,25 @@ defmodule HyperAuth.Authenticator.LDAP do
       nil
     end
   end
-end
 
-defp verify_ldap_credentials(username, password, ldap_base) do
-  case Exldap.open(2000) do
-    {:ok, connection} ->
-      ldap_search = if is_binary(ldap_base) do
-        "CN="<>username<>","<>ldap_base
-      else
-        "CN="<>username
-      end
-      case Exldap.verify_credentials(connection, ldap_search, password) do
-        :ok ->
-          %{
-            "uid" => username
-          }
-        _ ->
-          nil
-      end
-    _ ->
-      nil
+  defp verify_ldap_credentials(username, password, ldap_base) do
+    case Exldap.open(2000) do
+      {:ok, connection} ->
+        ldap_search = if is_binary(ldap_base) do
+          "CN="<>username<>","<>ldap_base
+        else
+          "CN="<>username
+        end
+        case Exldap.verify_credentials(connection, ldap_search, password) do
+          :ok ->
+            %{
+              "uid" => username
+            }
+          _ ->
+            nil
+        end
+      _ ->
+        nil
+    end
   end
 end
