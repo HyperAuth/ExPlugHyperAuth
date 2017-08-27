@@ -16,7 +16,7 @@
 defmodule HyperAuth.Authenticator.Dummy do
   @behaviour HyperAuth.Authenticator
   @moduledoc """
-  Dummy authenticator.
+  Dummy authenticator for `HyperAuth` plug.
   """
 
   @doc """
