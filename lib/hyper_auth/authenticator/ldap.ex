@@ -32,7 +32,7 @@ defmodule HyperAuth.Authenticator.LDAP do
   @doc """
   LDAP authentication.
   """
-  def authenticate(_scheme, credentials, opts) do
+  def authenticate(credentials, opts) do
     username = credentials["Username"]
     password = credentials["Password"]
     if is_binary(username) and is_binary(password) do
