@@ -49,3 +49,7 @@ cache:
   directories:
     - _build
     - deps
+branches:
+  only:
+    - master
+    - develop

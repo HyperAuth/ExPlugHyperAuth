@@ -68,6 +68,8 @@ defmodule HyperAuth.Scheme.Digest do
   @doc """
   Hash md5 encoded in hexadecimal in lowercase.
 
+  ## Examples
+
     iex> HyperAuth.Scheme.Digest.md5 "Test"
     "0cbc6611f5540bd0809a388dc95a615b"
   """
@@ -80,6 +82,8 @@ defmodule HyperAuth.Scheme.Digest do
   @doc """
   Hash sha256 encoded in hexadecimal in lowercase.
 
+  ## Examples
+
     iex> HyperAuth.Scheme.Digest.sha256 "Test"
     "532eaabd9574880dbf76b9b8cc00832c20a6ec113d682299550d7a6e0f345e25"
   """
@@ -91,8 +95,8 @@ defmodule HyperAuth.Scheme.Digest do
 
   @doc """
   Hash sha384 encoded in base64.
-  This is used to have a nonce more secure than
-  with md5.
+
+  This is used to have a nonce more secure than with md5.
 
   ## Examples
 

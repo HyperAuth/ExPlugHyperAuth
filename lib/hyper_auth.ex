@@ -3,48 +3,42 @@ defmodule HyperAuth do
   @moduledoc """
   Plug for HTTP AAA using the HTTP Auth framework.
 
+  When a configured scheme is found in the authorization header
+  it will use that to process the values of the header (with
+  access to the connection but the modifications are ignored),
+  with that values and other generic values the authenticator
+  will authenticate the user (without access to connection).
+
   This plug is extensible with the behaviours:
     * `HyperAuth.Scheme`
     * `HyperAuth.Authenticator`
 
-  When a configured scheme is found in the
-    authorization header it will use that to
-    process the values of the header (with
-    access to the connection but the modifications
-    are ignored), with that values and other generic
-    values the authenticator will authenticate
-    the user (without access to connection).
+  This library support the common schemes then often you only need
+  extend it with modules of `HyperAuth.Authenticator` behaviour
+  (more safe than extend the schemes) like.
 
-  This library support the common schemes then
-    often you only need extend it with
-    modules of `HyperAuth.Authenticator`
-    behaviour (more safe than extend the
-    schemes).
+  The behaviour of `HyperAuth` is showed in the next table where:
+    * **TLS**: If the connection is secure (HTTPS, HTTP over SSL/TLS).
+    * **Public**: If the resource is configured as public access allowed.
+    * **Header**: If exists the authorization header in the request.
+    * **Auth**: If the credentials are valid.
+    * **Status**: The HTTP status code response.
+    * **User**: The user authenticated.
 
-  RFC 2617 http://www.ietf.org/rfc/rfc2617.txt
-  http://www.webdav.org/specs/rfc2617.html
-
-  RFC 7235 https://tools.ietf.org/html/rfc7235
-  http://www.webdav.org/specs/rfc7235.html
-
-  RFC 7616 https://tools.ietf.org/html/rfc7616
-
-  +-----+--------+--------+------+
-  | TLS | PUBLIC | HEADER | AUTH |
-  +-----+--------+--------+------+-----+------+
-  | NO  |  NO    |  NO    | NO   | 403 | anon |
-  | NO  |  NO    |  YES   | NO   | 403 | anon |
-  | NO  |  NO    |  YES   | YES  | 403 | anon |
-  | NO  |  YES   |  NO    | NO   | 200 | anon |
-  | NO  |  YES   |  YES   | NO   | 403 | anon |
-  | NO  |  YES   |  YES   | YES  | 403 | anon |
-  | YES |  NO    |  NO    | NO   | 401 | anon |
-  | YES |  NO    |  YES   | NO   | 401 | anon |
-  | YES |  YES   |  NO    | NO   | 200 | anon |
-  | YES |  YES   |  YES   | NO   | 200 | anon |
-  | YES |  NO    |  YES   | YES  | 200 | user |
-  | YES |  YES   |  YES   | YES  | 200 | user |
-  +-----+--------+--------+------+-----+------+
+  | TLS | Public | Header | Auth | Status | User |
+  |-----|--------|--------|------|--------|------|
+  | NO  |  NO    |  NO    | NO   |  403   | anon |
+  | NO  |  NO    |  YES   | NO   |  403   | anon |
+  | NO  |  NO    |  YES   | YES  |  403   | anon |
+  | NO  |  YES   |  NO    | NO   |  200   | anon |
+  | NO  |  YES   |  YES   | NO   |  403   | anon |
+  | NO  |  YES   |  YES   | YES  |  403   | anon |
+  | YES |  NO    |  NO    | NO   |  401   | anon |
+  | YES |  NO    |  YES   | NO   |  401   | anon |
+  | YES |  YES   |  NO    | NO   |  200   | anon |
+  | YES |  YES   |  YES   | NO   |  200   | anon |
+  | YES |  NO    |  YES   | YES  |  200   | user |
+  | YES |  YES   |  YES   | YES  |  200   | user |
   """
 
   @doc """
@@ -87,7 +81,7 @@ defmodule HyperAuth do
             credentials = process_authorization conn, scheme, tokens, authorization_properties, opts
             if is_map credentials do
               # Authenticate
-              user = authenticate credentials, opts
+              user = authenticate scheme, credentials, opts
               if is_map user do
                 # Put the user in the connection
                 put_private conn, :auth_user, credentials
@@ -113,7 +107,7 @@ defmodule HyperAuth do
     end
   end
 
-  defp authenticate(credentials, opts) do
+  defp authenticate(scheme, credentials, opts) do
     # Call the configured authenticator module
     authenticator_module = opts[:authenticator]
     if is_nil authenticator_module do
@@ -122,7 +116,7 @@ defmodule HyperAuth do
       # Add common credentials values
       nas_identifier = Atom.to_string(node())
       credentials = Map.put(credentials, "NAS-Identifier", nas_identifier)
-      user = authenticator_module.authenticate credentials, opts
+      user = authenticator_module.authenticate scheme, credentials, opts
       # All user map need an UID
       if is_nil user["uid"] do
         nil
