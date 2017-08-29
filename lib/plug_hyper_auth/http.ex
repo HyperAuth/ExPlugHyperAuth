@@ -1,19 +1,19 @@
-# This file is part of HyperAuth.
+# This file is part of PlugHyperAuth.
 # Copyright (C) 2017  Jesús Hernández Gormaz
 #
-# HyperAuth is free software: you can redistribute it and/or modify
+# PlugHyperAuth is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
 # published by the Free Software Foundation, either version 3 of the
 # License, or (at your option) any later version.
 #
-# HyperAuth is distributed in the hope that it will be useful,
+# PlugHyperAuth is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU Affero General Public License for more details.
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-defmodule HyperAuth.HTTP do
+defmodule PlugHyperAuth.HTTP do
   @moduledoc """
   HTTP helpers for authentication framework.
   """
@@ -23,19 +23,19 @@ defmodule HyperAuth.HTTP do
 
   ## Examples
 
-    iex> HyperAuth.HTTP.parse_authorization "Basic dXNlcm5hbWU6cGFzc3dvcmQ="
+    iex> PlugHyperAuth.HTTP.parse_authorization "Basic dXNlcm5hbWU6cGFzc3dvcmQ="
     {"basic", [
       "dXNlcm5hbWU6cGFzc3dvcmQ="
     ], %{}}
 
-    iex> HyperAuth.HTTP.parse_authorization "Basic dXNlcm5hbWU6cGFzc3dvcmQ=, realm=\"admin\""
+    iex> PlugHyperAuth.HTTP.parse_authorization "Basic dXNlcm5hbWU6cGFzc3dvcmQ=, realm=\"admin\""
     {"basic", [
       "dXNlcm5hbWU6cGFzc3dvcmQ="
     ], %{
       "realm" => "admin"
     }}
 
-    iex> HyperAuth.HTTP.parse_authorization "Digest username=\"root\", realm=\"admin\", nonce=\"012345\", opaque=\"012345\", uri=\"/\", response=\"0a1b2c\""
+    iex> PlugHyperAuth.HTTP.parse_authorization "Digest username=\"root\", realm=\"admin\", nonce=\"012345\", opaque=\"012345\", uri=\"/\", response=\"0a1b2c\""
     {"digest", [], %{
       "username" => "root",
       "realm" => "admin",
@@ -45,10 +45,10 @@ defmodule HyperAuth.HTTP do
       "response" => "0a1b2c"
     }}
 
-    iex> HyperAuth.HTTP.parse_authorization "Nothig"
+    iex> PlugHyperAuth.HTTP.parse_authorization "Nothig"
     {"nothig", [], %{}}
 
-    iex> HyperAuth.HTTP.parse_authorization ""
+    iex> PlugHyperAuth.HTTP.parse_authorization ""
     nil
   """
   def parse_authorization(authorization) do
