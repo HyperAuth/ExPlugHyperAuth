@@ -1,20 +1,20 @@
-defmodule HyperAuth.Mixfile do
+defmodule PlugHyperAuth.Mixfile do
   use Mix.Project
 
   def project do
     [
       app: :plug_hyper_auth,
-      version: "0.2.1",
+      version: "1.0.0",
       elixir: "~> 1.3",
       description: "Plug for HTTP authentication",
       start_permanent: Mix.env == :prod,
       deps: deps(),
       package: [
         licenses: ["AGPLv3"],
-        source_url: "https://github.com/HyperAuth/ExHyperAuth",
-        homepage_url: "https://github.com/HyperAuth/ExHyperAuth",
+        source_url: "https://github.com/HyperAuth/ExPlugHyperAuth",
+        homepage_url: "https://github.com/HyperAuth/ExPlugHyperAuth",
         links: %{
-          "Github" => "https://github.com/HyperAuth/ExHyperAuth"
+          "Github" => "https://github.com/HyperAuth/ExPlugHyperAuth"
         },
         maintainers: [
           "Jesús Hernández Gormaz"
@@ -36,8 +36,8 @@ defmodule HyperAuth.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:hyper_auth, "~> 0.0.0"},
       {:plug, "~> 1.3.3 or ~> 1.4"},
-      {:exldap, "~> 0.4", optional: true},
       {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end
