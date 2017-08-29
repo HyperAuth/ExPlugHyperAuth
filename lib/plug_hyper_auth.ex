@@ -26,7 +26,7 @@ defmodule PlugHyperAuth do
 
   This plug is extensible with the behaviours:
     * `PlugHyperAuth.Scheme`
-    * `PlugHyperAuth.Authenticator`
+    * `HyperAuth.Authenticator`
 
   This library support the common schemes then often you only need
   extend it with modules of `HyperAuth.Authenticator` behaviour

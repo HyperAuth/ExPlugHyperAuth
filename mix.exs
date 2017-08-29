@@ -4,7 +4,7 @@ defmodule PlugHyperAuth.Mixfile do
   def project do
     [
       app: :plug_hyper_auth,
-      version: "1.0.0",
+      version: "1.0.1",
       elixir: "~> 1.3",
       description: "Plug for HTTP authentication",
       start_permanent: Mix.env == :prod,
@@ -36,7 +36,7 @@ defmodule PlugHyperAuth.Mixfile do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:hyper_auth, "~> 0.0.0"},
+      {:hyper_auth, "~> 0.0 or ~> 0.1"},
       {:plug, "~> 1.3.3 or ~> 1.4"},
       {:ex_doc, ">= 0.0.0", only: :dev}
     ]
