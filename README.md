@@ -17,7 +17,7 @@ dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:plug_hyper_auth, "~> 0.1.0"}
+    {:plug_hyper_auth, "~> 1.0"}
   ]
 end
 ```
