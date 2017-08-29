@@ -1,13 +1,13 @@
-# HyperAuth
+# PlugHyperAuth
 [![Hex.pm](https://img.shields.io/hexpm/l/plug_hyper_auth.svg)](https://hex.pm/packages/plug_hyper_auth)
 [![Hex.pm](https://img.shields.io/hexpm/v/plug_hyper_auth.svg)](https://hex.pm/packages/plug_hyper_auth)
 [![Hex.pm](https://img.shields.io/hexpm/dt/plug_hyper_auth.svg)](https://hex.pm/packages/plug_hyper_auth)
-[![Build Status](https://travis-ci.org/HyperAuth/ExHyperAuth.svg?branch=master)](https://travis-ci.org/HyperAuth/ExHyperAuth)
+[![Build Status](https://travis-ci.org/HyperAuth/ExPlugHyperAuth.svg?branch=master)](https://travis-ci.org/HyperAuth/ExPlugHyperAuth)
 
 Plug for HTTP authentication.
 
-ExHyperAuth repository is the version of HyperAuth wrote in Elixir to use with web
-applications based on Plug.
+ExPlugHyperAuth repository is a plug to use the version of HyperAuth wrote
+in Elixir in web applications based on Plug.
 
 ## Installation
 
@@ -45,8 +45,8 @@ You hereby assign copyright in this code to the project, to be licensed
 under the same terms as the rest of the code.
 
 You're owner of your contribution copyright, but it will be covered under
-HyperAuth's license and also it's shared with the rest of authors, all the
-contributors are authors of HyperAuth.
+PlugHyperAuth's license and also it's shared with the rest of authors, all the
+contributors are authors of PlugHyperAuth.
 
 Read the license note section to check details about it.
 
@@ -62,12 +62,12 @@ Some useful links if you want to contribute to this repository.
 
 ## License note
 
-HyperAuth is free software: you can redistribute it and/or modify
+PlugHyperAuth is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as
 published by the Free Software Foundation, either version 3 of the
 License, or (at your option) any later version.
 
-HyperAuth is distributed in the hope that it will be useful,
+PlugHyperAuth is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU Affero General Public License for more details.

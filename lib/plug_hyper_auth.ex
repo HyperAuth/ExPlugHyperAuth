@@ -1,19 +1,19 @@
-# This file is part of HyperAuth.
+# This file is part of PlugHyperAuth.
 # Copyright (C) 2017  Jesús Hernández Gormaz
 #
-# HyperAuth is free software: you can redistribute it and/or modify
+# PlugHyperAuth is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as
 # published by the Free Software Foundation, either version 3 of the
 # License, or (at your option) any later version.
 #
-# HyperAuth is distributed in the hope that it will be useful,
+# PlugHyperAuth is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU Affero General Public License for more details.
 #
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-defmodule HyperAuth do
+defmodule PlugHyperAuth do
   import Plug.Conn
   @moduledoc """
   Plug for HTTP AAA using the HTTP auth framework.
@@ -25,14 +25,14 @@ defmodule HyperAuth do
   will authenticate the user (without access to connection).
 
   This plug is extensible with the behaviours:
-    * `HyperAuth.Scheme`
-    * `HyperAuth.Authenticator`
+    * `PlugHyperAuth.Scheme`
+    * `PlugHyperAuth.Authenticator`
 
   This library support the common schemes then often you only need
   extend it with modules of `HyperAuth.Authenticator` behaviour
   (more safe than extend the schemes) like.
 
-  The behaviour of `HyperAuth` is showed in the next table where:
+  The behaviour of `PlugHyperAuth` is showed in the next table where:
     * **TLS**: If the connection is secure (HTTPS, HTTP over SSL/TLS).
     * **Public**: If the resource is configured as public access allowed.
     * **Header**: If exists the authorization header in the request.
@@ -60,8 +60,8 @@ defmodule HyperAuth do
   Configure the schemes alloweds and the authenticator.
 
   The default schemes are:
-    * Basic: HyperAuth.Scheme.Basic
-    * Digest: HyperAuth.Scheme.Digest
+    * Basic: PlugHyperAuth.Scheme.Basic
+    * Digest: PlugHyperAuth.Scheme.Digest
   """
   def init(opts) do
     schemes = Keyword.get(opts, :schemes, %{})
@@ -96,7 +96,7 @@ defmodule HyperAuth do
             credentials = process_authorization conn, scheme, tokens, authorization_properties, opts
             if is_map credentials do
               # Authenticate
-              user = authenticate credentials, opts
+              user = HyperAuth.authenticate credentials, opts
               if is_map user do
                 # Put the user in the connection
                 put_private conn, :auth_user, credentials
@@ -119,25 +119,6 @@ defmodule HyperAuth do
       nil
     else
       scheme_module.process_authorization conn, tokens, authorization_properties, opts
-    end
-  end
-
-  defp authenticate(credentials, opts) do
-    # Call the configured authenticator module
-    authenticator_module = opts[:authenticator]
-    if is_nil authenticator_module do
-      nil
-    else
-      # Add common credentials values
-      nas_identifier = Atom.to_string(node())
-      credentials = Map.put(credentials, "NAS-Identifier", nas_identifier)
-      user = authenticator_module.authenticate credentials, opts
-      # All user map need an UID
-      if is_nil user["uid"] do
-        nil
-      else
-        user
-      end
     end
   end
 
